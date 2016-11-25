@@ -1,0 +1,13 @@
+title: Let's Encrypt!
+---
+author: Nicolas Untz
+---
+body:
+
+I just enabled SSL on the site, using the [Let's Encrypt](https://letsencrypt.org/) service, which provides free SSL certificates with auto-renewal.
+
+I documented the process [here](/projects/archived-projects/lets-encrypt/).
+---
+pub_date: 2016-11-24
+---
+twitter_handle: nuntz

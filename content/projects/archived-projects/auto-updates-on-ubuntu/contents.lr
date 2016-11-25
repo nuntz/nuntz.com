@@ -1,0 +1,14 @@
+_model: project
+---
+title: Auto Updates on Ubuntu
+---
+body:
+
+[This](http://askubuntu.com/questions/9/how-do-i-enable-automatic-updates#204) should really be a default configuration. Run:
+
+```bash
+$ sudo apt-get install unattended-upgrades
+$ sudo dpkg-reconfigure unattended-upgrades
+```
+---
+status: complete

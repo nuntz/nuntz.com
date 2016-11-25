@@ -1,0 +1,14 @@
+[project]
+name = nuntz.com
+url = https://nuntz.com/
+url_style = absolute
+
+[servers.production]
+enabled = yes
+name = Production
+target = rsync://ubuntu@35.163.12.102/var/www/html
+default = yes
+
+[packages]
+lektor-markdown-highlighter = 0.1
+lektor-atom = 0.2

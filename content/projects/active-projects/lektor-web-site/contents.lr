@@ -1,0 +1,166 @@
+_model: project
+---
+title: Lektor Web Site
+---
+body:
+
+This is essentially where I document all the work related to this web site (meta). Essentially [Lektor](https://www.getlektor.com) is a static site generator, so I can host the content on any host, including S3. Currently I am planning to host this on a simple AWS instance with nginx.
+
+### Roadmap
+
+* create the basic models and templates (done)
+* get syntax highlighting for code snippets (done)
+* setup publishing to the AWS EC2 instance used to host the content (done)
+* get a better stylesheet (pending)
+* open source the code web site on Github (pending)
+
+### Installation
+
+Simply:
+
+```bash
+$ pip install lektor
+```
+
+Or follow the [instructions](https://www.getlektor.com/docs/installation/) on the official web site.
+
+### Models
+
+children.ini:
+
+```ini
+[model]
+name = Children
+label = {{ this.title }}
+
+[fields.title]
+label = Title
+type = string
+
+[fields.body]
+label = Body
+type = markdown
+```
+
+project.ini:
+
+```ini
+[model]
+name = Project
+label = {{ this.title }}
+
+[fields.title]
+label = Title
+type = string
+
+[fields.status]
+label = Status
+type = string
+
+[fields.body]
+label = Body
+type = markdown
+```
+
+### Templates
+
+children.html:
+
+```html+jinja
+{% extends "layout.html" %}
+{% block title %}{{ this.title }}{% endblock %}
+{% block body %}
+  <h2>{{ this.title }}</h2>
+  {{ this.body }}
+
+<ul class="tree-nav">
+  {% for child in this.children %}
+    <li><a href="{{ child|url }}">{{ child.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}
+```
+
+project.html:
+
+```html+jinja
+{% extends "layout.html" %}
+{% block title %}{{ this.title }}{% endblock %}
+{% block status %}{{ this.status }}{% endblock %}
+{% block body %}
+  <h2>{{ this.title }}</h2>
+  <h3>Status: {{ this.status }}</h3>
+  {{ this.body }}
+{% endblock %}
+```
+
+### Syntax Highlighting
+
+I use the [lektor-markdown-highlighter](https://github.com/lektor/lektor-markdown-highlighter) plugin. To install:
+
+```bash
+$ lektor plugins add markdown-highlighter
+```
+
+A new configuration file had to be added `configs/markdown-highlighter.ini` with:
+
+```ini
+[pygments]
+style = tango
+```
+
+The layout.html template had to be updated to add (just after the css statement):
+
+```html+jinja
+<link rel="stylesheet" href="{{ get_pygments_stylesheet()|url }}">
+```
+
+### Atom Feed
+
+Install the plugin:
+
+```bash
+lektor plugins add lektor-atom
+```
+
+I added a simple `configs/atom.ini` file with:
+
+```ini
+[blog]
+name = nuntz.com
+source_path = /
+url_path = /feed.xml
+items = site.query('/blog')
+```
+
+### Hosting the Content on an Ubuntu AWS EC2 Instance
+
+I use Ubuntu 16.04 LTS on a nano instance, with nginx as the web server. To install nginx:
+
+```bash
+sudo apt-get install nginx
+```
+
+The document root is `/var/www/html`, it has to be writable by default `ubuntu` user, so:
+
+```bash
+sudo chown -R ubuntu.ubuntu /var/www/html
+```
+
+To configure the deployment, we update the `nuntz.com.lektorproject` file to add:
+
+```ini
+[servers.production]
+enabled = yes
+name = Production
+target = rsync://ubuntu@nuntz.com/var/www/html
+default = yes
+```
+
+That's it. We can deploy the content with:
+
+```bash
+lektor deploy production
+```
+---
+status: active
