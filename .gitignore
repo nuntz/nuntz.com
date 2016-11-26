@@ -1,6 +1,8 @@
 # Vim generated files #
 ######################
 *.swp
+*.swn
+*.swo
 
 # OS generated files #
 ######################
