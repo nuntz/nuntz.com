@@ -2,18 +2,6 @@ _model: page
 ---
 title: Search
 ---
-body:
-
-Search this web site:
-
-<div class="google-custom-search">
-  <form method=get>
-    <div class="input-group">
-      <input type=text class="form-control" name=q size=40 autofocus>
-      <span class="input-group-btn">
-        <input type=submit class="btn btn-default" value="Search">
-      </span>
-    </div>
-  </form>
-  <div class="search-usage-info">Powered by Google</div>
-</div>
+body: Search this web site:
+---
+_template: search.html
