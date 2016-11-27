@@ -42,7 +42,7 @@ label = Body
 type = markdown
 ```
 
-project.ini:
+And `project.ini`:
 
 ```ini
 [model]
@@ -64,7 +64,7 @@ type = markdown
 
 ### Templates
 
-children.html:
+Content of `children.html`:
 
 ```html+jinja
 {% extends "layout.html" %}
@@ -81,7 +81,7 @@ children.html:
 {% endblock %}
 ```
 
-project.html:
+And `project.html`:
 
 ```html+jinja
 {% extends "layout.html" %}
