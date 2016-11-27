@@ -3,14 +3,14 @@
   <h1 class="page-header">{{ this.title }}</h1>
   {{ this.body }}
 
-  <h2>Active Projects</h2>
+  <p>Stuff I'm working on right now:</p>
   <ul class="tree-nav">
     {% for active_project in this.children.filter(F.status == 'active') %}
       <li><a href="{{ active_project|url }}">{{ active_project.title }}</a></li>
     {% endfor %}
   </ul>
 
-  <h2>Past Projects</h2>
+  <p>Older projects:</p>
   <ul class="tree-nav">
     {% for active_project in this.children.filter(F.status == 'complete') %}
       <li><a href="{{ active_project|url }}">{{ active_project.title }}</a></li>
