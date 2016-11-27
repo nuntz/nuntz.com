@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block status %}{{ this.status }}{% endblock %}
 {% block body %}
-  <h2>{{ this.title }}</h2>
+  <h1 class="page-header">{{ this.title }}</h1>
   <h4>Status: {{ this.status }}</h4>
   {{ this.body }}
 {% endblock %}

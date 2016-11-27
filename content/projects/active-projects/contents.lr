@@ -1,7 +1,0 @@
-_model: page
----
-title: Active Projects
----
-body: This is what I am working on right now.
----
-_template: children.html

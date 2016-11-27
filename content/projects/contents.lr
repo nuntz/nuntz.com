@@ -1,5 +1,7 @@
+_model: page
+---
 title: Projects
 ---
 body: 
 ---
-_template: children.html
+_template: projects.html

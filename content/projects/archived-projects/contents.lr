@@ -1,7 +1,0 @@
-_model: page
----
-title: Archived Projects
----
-body: Stuff I am no longer working on.
----
-_template: children.html
