@@ -11,8 +11,8 @@ This is essentially where I document all the work related to this web site (meta
 * create the basic models and templates (done)
 * get syntax highlighting for code snippets (done)
 * setup publishing to the AWS EC2 instance used to host the content (done)
-* get a better stylesheet (pending)
-* open source the code web site on Github (pending)
+* open source the code web site on Github (done)
+* get a better stylesheet (in progress)
 
 ### Installation
 
@@ -160,7 +160,7 @@ default = yes
 That's it. We can deploy the content with:
 
 ```bash
-lektor deploy production
+lektor deploy
 ```
 ---
 status: active
