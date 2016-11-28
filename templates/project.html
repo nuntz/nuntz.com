@@ -1,7 +1,30 @@
 {% extends "layout.html" %}
 {% block status %}{{ this.status }}{% endblock %}
 {% block body %}
+
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th scope="row">Status</th>
+        <td>
+          {% if this.status == "active" %}
+            <span class="label label-success">
+          {% else %}
+            <span class="label label-info">
+          {% endif %}
+          {{ this.status }}</span>
+        </td>
+      </tr>
+      {% if this.repository %}
+        <tr>
+          <th scope="row">Repository</th>
+          <td><a href="{{ this.repository }}">{{ this.repository }}</a></td>
+        </tr>
+      {% endif %}
+    </tbody>
+  </table>
+
   <h1 class="page-header">{{ this.title }}</h1>
-  <h4>Status: {{ this.status }}</h4>
+
   {{ this.body }}
 {% endblock %}

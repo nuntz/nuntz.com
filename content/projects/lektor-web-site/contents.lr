@@ -163,4 +163,6 @@ That's it. We can deploy the content with:
 lektor deploy
 ```
 ---
+repository: https://github.com/nuntz/nuntz.com
+---
 status: active
