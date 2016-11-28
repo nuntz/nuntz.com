@@ -1,0 +1,36 @@
+_model: project
+---
+title: unicli
+---
+repository: https://github.com/nuntz/unicli
+---
+status: active
+---
+body:
+
+Goal: build a lightweight command light interface to the Ubiquiti Networks Unifi REST API (tested with version 5).
+
+This is a simple command-line utility to automate some tasks on my UniFi controller, e.g. block some clients at specific hours. It uses the fantastic [Requests](http://www.python-requests.org/en/master/) and [Click](http://click.pocoo.org/5/) libraries. Thanks to the work of [Jakob Borg](https://github.com/calmh) and others who documented the UniFi API, this ended up being fairly straightforward.
+
+Note: this is still work in progress.
+
+### Examples
+
+List all the clients, the `--no-verify` option is necessary if the controller uses a self-signed TLS certificate:
+
+```bash
+$ unicli --host mycontroller --port 8443 --no-verify --user ubnt --site default list
+```
+
+Block a client, using the default port, site, and user:
+
+```bash
+$ unicli --host mycontroller --no-verify block 01:23:45:67:89:ab
+```
+
+Hint: the password can also be accepted from an environment variable. To prevent the password from being stored in your history file, set the `HISTCONTROL` environment variable to `ignorespace` and prefix the export statement a blank space when setting the password:
+
+```bash
+$ export HISTCONTROL=ignorespace
+$  export PASSWORD=foo
+```
