@@ -10,5 +10,11 @@ body:
 $ sudo apt-get install unattended-upgrades
 $ sudo dpkg-reconfigure unattended-upgrades
 ```
+
+Additionally, a forced reboot in case some patches require it:
+
+```
+0 4   *   *   *    /sbin/shutdown -r +5
+```
 ---
 status: complete
