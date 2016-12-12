@@ -1,0 +1,21 @@
+_model: project
+---
+title: Using a Public Certificate on the UniFi Controller
+---
+body:
+
+Goal: make the UniFi Controller use a valid public SSL certificate.
+
+Steven Jenkins has created [a script](https://github.com/stevejenkins/unifi-linux-utils/blob/master/unifi_ssl_import.sh) to automate the process, but the keys steps follow.
+
+### Keytool
+
+The keystore file is `/var/lib/unifi/keystore` and its content can be listed using the `keytool` command:
+
+```bash
+$ keytool -list -keystore keystore
+```
+
+Note: `keytool` will prompt you for the password.
+---
+status: active
