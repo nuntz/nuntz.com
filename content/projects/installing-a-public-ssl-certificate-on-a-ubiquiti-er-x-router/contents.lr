@@ -1,0 +1,83 @@
+_model: project
+---
+title: Installing a Public SSL Certificate on a Ubiquiti ER-X Router
+---
+body:
+
+Note: this is based on [this post](https://community.ubnt.com/t5/EdgeMAX/How-to-install-a-Valid-Certificate-on-the-ER-version-1-8-5-and/m-p/1634700#M121338).
+
+Objective: get the web interface of a Ubiquiti ER-X EdgeRouter to use a public certificate, in order to prevent browser warning messages from being displayed when accessing it.
+
+Overview of the procedure:
+
+1. obtain a Certificate issued by a Trusted CA
+    * prepare a CSR (Certificate Signing Request) for the router;
+    * send the CSR to your third party SSL certificate supplier;
+    * retrieve the signed certificate, AND the CA root certificate, AND any intermediate certificates.
+2. copy the certificate files to the router and configure the router to use them instead of the default;
+3. adjust your DNS settings so that the url you use to access the router matches the certificate.
+
+**Warning: it appears that the SSL files are deleted after the router firmware is upgraded. Keep a backup of the server.pem file offline in case you need to restore it.**
+
+## Obtaining the Certificate
+
+SSH to the router and get root privileges:
+
+```shell
+sudo -i
+```
+
+The files are located in the /etc/ssl directory. Let's start by creating the CSR:
+
+```shell
+cd /etc/ssl/
+openssl req -sha256 -out server.csr -new -newkey rsa:2048 -nodes -keyout private/server.key
+```
+
+For the CSR, use:
+
+* Country: *your country*
+* State: *your state*
+* Locality: *your city*
+* Org name: *your organization name*
+* Org unit: *blank*
+* Common name: *hostname of the router*
+* Email: *email address of the technical contact*
+* Challenge password: *blank*
+* Optional company name: *blank*
+
+Copy the content of the `/etc/ssl/server.csr` file in the clipboard. When submitting the CSR to the certificate authority, select the Apache/ModSSL format.
+
+## Installing the Certificate Files
+
+Create a file containing the server certificate, and paste the content of the certificate:
+
+```shell
+cat > /etc/ssl/server.crt
+```
+
+Optionally, create the intermediate certificate file:
+
+```shell
+cat > /etc/ssl/intermediate.crt
+```
+
+Then create the PEM file containing both the certificate the private key:
+
+```shell
+cat /etc/ssl/server.crt /etc/ssl/private/server.key > /etc/ssl/server.pem
+```
+
+Now switch back to the admin interface and set the options to use the new certificate:
+
+```shell
+configure
+set service gui ca-file /etc/ssl/intermediate.crt
+set service gui cert-file /etc/ssl/server.pem
+```
+
+## DNS Configuration
+
+Make sure a DNS record for the hostname exists.
+---
+status: complete

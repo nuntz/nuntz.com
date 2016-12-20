@@ -1,6 +1,6 @@
 _model: project
 ---
-title: Using a Public Certificate on the UniFi Controller
+title: Installing a Public SSL Certificate on a UniFi Controller
 ---
 body:
 
@@ -17,5 +17,9 @@ $ keytool -list -keystore keystore
 ```
 
 Note: `keytool` will prompt you for the password.
+
+### Next Steps
+
+TBD.
 ---
 status: active
