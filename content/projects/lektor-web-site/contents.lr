@@ -6,13 +6,14 @@ body:
 
 This is essentially where I document all the work related to this web site (meta). Essentially [Lektor](https://www.getlektor.com) is a static site generator, so I can host the content on any host, including S3. Currently I am planning to host this on a simple AWS instance with nginx.
 
-### Roadmap
+### Objectives
 
 * create the basic models and templates (done)
 * get syntax highlighting for code snippets (done)
 * setup publishing to the AWS EC2 instance used to host the content (done)
 * open source the code web site on Github (done)
 * get a better stylesheet (done)
+* Travis CI integration (in progress)
 
 ### Installation
 
