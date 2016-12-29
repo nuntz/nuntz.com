@@ -1,0 +1,33 @@
+_model: project
+---
+title: Running UniFi Controller as a Docker Container
+---
+body:
+
+### Objectives
+
+* run UniFi controller as a Docker container
+* setup persistent data outside of the container
+
+### Running UniFi as a Container
+
+We use [the (currently) most popular Docker image](https://hub.docker.com/r/jacobalberty/unifi/~/dockerfile/). The source code for the container [is on Github](https://github.com/jacobalberty/unifi-docker).
+
+We start by creating the folders to keep the persistent volumes:
+
+```bash
+$ mkdir -p ~/docker-data/unifi/lib
+$ mkdir -p ~/docker-data/unifi/log
+$ mkdir -p ~/docker-data/unifi/run
+```
+
+```bash
+$ cd ~
+$ sudo docker run -e TZ=Canada/Pacific \
+  -v $PWD/docker-data/unifi/lib:/var/lib/unifi \
+  -v $PWD/docker-data/unifi/log:/var/log/unifi \
+  -v $PWD/docker-data/unifi/run:/var/run/unifi \
+  --net=host -d jacobalberty/unifi:latest
+```
+---
+status: active
