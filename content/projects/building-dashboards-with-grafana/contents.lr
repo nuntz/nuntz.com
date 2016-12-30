@@ -79,3 +79,5 @@ $ sudo docker run hello-world
 ```
 ---
 status: active
+---
+repository: https://github.com/nuntz/grafana-influxdb
