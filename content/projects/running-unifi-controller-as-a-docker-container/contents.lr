@@ -31,4 +31,4 @@ $ sudo docker run -e TZ=Canada/Pacific \
   --net=host -d jacobalberty/unifi:latest
 ```
 ---
-status: active
+status: complete

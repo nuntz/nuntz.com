@@ -166,4 +166,4 @@ lektor deploy
 ---
 repository: https://github.com/nuntz/nuntz.com
 ---
-status: active
+status: complete
