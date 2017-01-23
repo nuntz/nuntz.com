@@ -119,6 +119,6 @@ Sample metric to poll interface usage:
 SELECT derivative(mean("ifInOctets"), 10s) FROM "interface" WHERE "ifDescr" = 'eth0' AND $timeFilter GROUP BY time($interval) fill(null)
 ```
 ---
-status: active
+status: complete
 ---
 repository: https://github.com/nuntz/grafana-influxdb
