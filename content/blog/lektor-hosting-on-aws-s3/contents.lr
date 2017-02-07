@@ -4,14 +4,14 @@ author: Nicolas Untz
 ---
 body:
 
-I currently host this web site on an AWS nano instance. There is an alternate option using S3 Public Website Hosting along with CloudFront, which I suspect is more cost effective. The nice thing with the S3 option is that you no longer have to worry about managing a server. CloudFront is AWS's CDN solution, it distributes copies of the content on edge nodes for faster client access and it also support SNI TLS.
+I currently host this web site on an AWS nano instance. There is an alternate option using S3 Public Website Hosting along with CloudFront, which I suspect is more cost effective. The nice thing with the S3 option is that you no longer have to worry about managing a server. CloudFront is AWS's CDN solution, it distributes copies of the content on edge nodes for faster client access and it also supports SNI TLS.
 
-You can test the S3/CloudFront version of this site by using https://nuntz.net/ instead of https://nuntz.com/.
+In order to test this configuration I created a secondary domain, nuntz.net, hosted on S3/CloudFront, which you can test by using https://nuntz.net/ instead of https://nuntz.com/.
 
 ### S3 Deployment
 
 Here is the procedure to deploy the site on S3 using Lektor:
-* Create a new `nuntz.com` S3 bucket
+* Create a new `nuntz.net` S3 bucket
 * Apply new bucket policy to allow any client to read the content:
 
 ```json
