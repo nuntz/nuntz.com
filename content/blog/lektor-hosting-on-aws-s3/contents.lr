@@ -1,0 +1,74 @@
+title: Lektor Hosting on AWS S3
+---
+author: Nicolas Untz
+---
+body:
+
+I currently host this web site on an AWS nano instance. There is an alternate option using S3 Public Website Hosting along with CloudFront, which I suspect is more cost effective. The nice thing with the S3 option is that you no longer have to worry about managing a server. CloudFront is AWS's CDN solution, it distributes copies of the content on edge nodes for faster client access and it also support SNI TLS.
+
+You can test the S3/CloudFront version of this site by using https://nuntz.net/ instead of https://nuntz.com/.
+
+### S3 Deployment
+
+Here is the procedure to deploy the site on S3 using Lektor:
+* Create a new `nuntz.com` S3 bucket
+* Apply new bucket policy to allow any client to read the content:
+
+```json
+{
+  "Version":"2012-10-17",
+  "Statement":[{
+	"Sid":"AddPerm",
+        "Effect":"Allow",
+	  "Principal": "*",
+      "Action":["s3:GetObject"],
+      "Resource":["arn:aws:s3:::nuntz.net/*"
+      ]
+    }
+  ]
+}
+```
+
+* make the bucket a public web:
+  * select **Enable website hosting** in the **Static Website Hosting** property section of the bucke
+  * set **Index Document** to `index.html`
+  * set **Error Document** to `error.html`
+* install the [lektor-s3](https://github.com/spenczar/lektor-s3) plugin:
+
+```bash
+$ lektor plugins add lektor-s3
+```
+
+* add a new entry in the project file
+
+```ini
+[servers.s3]
+name = S3
+enabled = yes
+target = s3://nuntz.net
+```
+
+* deploy with:
+
+
+```bash
+$ lektor deploy s3
+```
+
+### Faster Access with CloudFront
+
+We can speed up access to the site using AWS's CDN (CloudFront):
+
+* open the CloudFront console, and create a distribution
+* on the Select a delivery method, choose Get Started
+* set **Alternate Domain Names (CNAMEs)** to `nuntz.net`
+* in **Origin domain name** enter `nuntz.net.s3-website-us-west-2.amazonaws.com`; Origin ID value is filled in for you
+* for Distribution Settings, set **Default Root Object** to index.html
+* click **Create Distribution**
+* open the Route 53 console and select the nuntz.com hosted zone, for **Alias Target**, choose the CloudFront distribution.
+
+That's it.
+---
+pub_date: 2017-02-06
+---
+twitter_handle: nuntz
