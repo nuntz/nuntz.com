@@ -76,7 +76,7 @@ So, how does S3/CloudFront compare to the nano EC2 instance? Well it's slightly 
 * [Pingdom Website speed test results for nuntz.com](https://tools.pingdom.com/#!/etNwc3/https://nuntz.com/blog/), running on an EC2 nano instance in Oregon;
 * [Pingdom Website speed test results for nuntz.net](https://tools.pingdom.com/#!/bomGZ2/https://nuntz.net/blog/), served on S3/CloudFront.
 
-In conclusion, I will likely switch to S3/CloudFront in the future...
+In conclusion, given the simplicity of the solution, I will likely switch to S3/CloudFront in the future...
 ---
 pub_date: 2017-02-06
 ---
