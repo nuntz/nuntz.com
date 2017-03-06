@@ -4,16 +4,11 @@ url = https://nuntz.com/
 url_style = absolute
 
 [servers.production]
-enabled = yes
-name = Production
-target = rsync://ubuntu@nuntz.com/var/www/html
-default = yes
-
-[servers.s3]
 name = S3
 enabled = yes
-target = s3://nuntz.net
-cloudfront = E20L4HM0KNQ5FD
+target = s3://nuntz.com
+cloudfront = E1DP3VAKS3JQ2D
+default = yes
 
 [packages]
 lektor-markdown-highlighter = 0.1
