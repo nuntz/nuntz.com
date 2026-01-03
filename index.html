@@ -1040,6 +1040,18 @@
             notifyFlyoverTheme(theme);
         };
 
+        const systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const handleSystemThemeChange = () => {
+            if (currentTheme === 'system') {
+                applyTheme('system');
+            }
+        };
+        if (systemThemeQuery.addEventListener) {
+            systemThemeQuery.addEventListener('change', handleSystemThemeChange);
+        } else if (systemThemeQuery.addListener) {
+            systemThemeQuery.addListener(handleSystemThemeChange);
+        }
+
         applyTheme('system');
         themeButtons.forEach((button) => {
             button.addEventListener('click', () => applyTheme(button.dataset.themeValue));
