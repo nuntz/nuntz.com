@@ -1,7 +1,0 @@
-_model: page
----
-title: Search
----
-body: Search this web site:
----
-_template: search.html

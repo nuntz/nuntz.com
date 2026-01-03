@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicolas Untz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+        :root {
+            color-scheme: light;
+            --bg: #f4f1ea;
+            --scene-bg: #f4f1ea;
+            --grid-color: rgba(21, 102, 60, 0.08);
+            --text: #1d221f;
+            --text-muted: #3c4a41;
+            --text-subtle: #5c6a61;
+            --accent: #1b8a4a;
+            --accent-strong: #0f6b36;
+            --accent-glow: rgba(15, 107, 54, 0.25);
+            --content-bg: rgba(255, 255, 255, 0.78);
+            --content-border: rgba(15, 107, 54, 0.18);
+            --content-shadow: 0 16px 40px rgba(30, 50, 38, 0.15), 0 0 40px rgba(15, 107, 54, 0.08);
+            --photo-border: rgba(15, 107, 54, 0.25);
+            --photo-shadow: 0 0 18px rgba(15, 107, 54, 0.12);
+            --link: #1b8a4a;
+            --link-hover: #0f6b36;
+            --focus-outline: #0f6b36;
+            --card-bg: rgba(21, 31, 24, 0.02);
+            --card-border: rgba(15, 107, 54, 0.18);
+            --card-shadow: 0 0 18px rgba(15, 107, 54, 0.1);
+            --contact-hover-bg: rgba(15, 107, 54, 0.08);
+            --contact-hover-border: rgba(15, 107, 54, 0.35);
+            --contact-hover-shadow: 0 0 20px rgba(15, 107, 54, 0.15);
+            --icon-hover: #0f6b36;
+            --icon-hover-glow: rgba(15, 107, 54, 0.4);
+            --banner-title: #1d221f;
+            --banner-glow: rgba(15, 107, 54, 0.25);
+            --footer: #5b655f;
+            --footer-hover: #39423d;
+            --segment-border: rgba(30, 40, 34, 0.35);
+            --segment-divider: rgba(30, 40, 34, 0.2);
+            --segment-bg: rgba(255, 255, 255, 0.7);
+            --segment-icon: #2b332d;
+            --segment-active-bg: #e0e3dd;
+            --segment-active-icon: #1d221f;
+            --segment-hover-bg: rgba(0, 0, 0, 0.05);
+            --segment-shadow: 0 8px 18px rgba(23, 32, 28, 0.18);
+            --tooltip-bg: #1d221f;
+            --tooltip-text: #f3f4f0;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                color-scheme: dark;
+                --bg: #0a0a0a;
+                --scene-bg: #000000;
+                --grid-color: rgba(0, 255, 0, 0.03);
+                --text: #e0e0e0;
+                --text-muted: #d4d4d4;
+                --text-subtle: rgba(255, 255, 255, 0.5);
+                --accent: #00dd55;
+                --accent-strong: #00ff00;
+                --accent-glow: rgba(0, 255, 0, 0.3);
+                --content-bg: rgba(20, 20, 20, 0.7);
+                --content-border: rgba(0, 255, 0, 0.12);
+                --content-shadow: 0 0 80px rgba(0, 255, 0, 0.04), 0 8px 32px rgba(0, 0, 0, 0.4);
+                --photo-border: rgba(0, 255, 0, 0.2);
+                --photo-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+                --link: #00dd55;
+                --link-hover: #00ff00;
+                --focus-outline: #00ff00;
+                --card-bg: rgba(255, 255, 255, 0.03);
+                --card-border: rgba(255, 255, 255, 0.08);
+                --card-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+                --contact-hover-bg: rgba(0, 255, 0, 0.05);
+                --contact-hover-border: rgba(0, 255, 0, 0.4);
+                --contact-hover-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+                --icon-hover: #00ff00;
+                --icon-hover-glow: rgba(0, 255, 0, 0.5);
+                --banner-title: #ffffff;
+                --banner-glow: rgba(255, 255, 255, 0.3);
+                --footer: #9a9a9a;
+                --footer-hover: #bbb;
+                --segment-border: rgba(255, 255, 255, 0.25);
+                --segment-divider: rgba(255, 255, 255, 0.12);
+                --segment-bg: rgba(0, 0, 0, 0.25);
+                --segment-icon: #e0e0e0;
+                --segment-active-bg: #2c312c;
+                --segment-active-icon: #f7f7f7;
+                --segment-hover-bg: rgba(255, 255, 255, 0.08);
+                --segment-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+                --tooltip-bg: #f1f2f0;
+                --tooltip-text: #1b1b1b;
+            }
+        }
+        html[data-theme="light"] {
+            color-scheme: light;
+            --bg: #f4f1ea;
+            --scene-bg: #f4f1ea;
+            --grid-color: rgba(21, 102, 60, 0.08);
+            --text: #1d221f;
+            --text-muted: #3c4a41;
+            --text-subtle: #5c6a61;
+            --accent: #1b8a4a;
+            --accent-strong: #0f6b36;
+            --accent-glow: rgba(15, 107, 54, 0.25);
+            --content-bg: rgba(255, 255, 255, 0.78);
+            --content-border: rgba(15, 107, 54, 0.18);
+            --content-shadow: 0 16px 40px rgba(30, 50, 38, 0.15), 0 0 40px rgba(15, 107, 54, 0.08);
+            --photo-border: rgba(15, 107, 54, 0.25);
+            --photo-shadow: 0 0 18px rgba(15, 107, 54, 0.12);
+            --link: #1b8a4a;
+            --link-hover: #0f6b36;
+            --focus-outline: #0f6b36;
+            --card-bg: rgba(21, 31, 24, 0.02);
+            --card-border: rgba(15, 107, 54, 0.18);
+            --card-shadow: 0 0 18px rgba(15, 107, 54, 0.1);
+            --contact-hover-bg: rgba(15, 107, 54, 0.08);
+            --contact-hover-border: rgba(15, 107, 54, 0.35);
+            --contact-hover-shadow: 0 0 20px rgba(15, 107, 54, 0.15);
+            --icon-hover: #0f6b36;
+            --icon-hover-glow: rgba(15, 107, 54, 0.4);
+            --banner-title: #1d221f;
+            --banner-glow: rgba(15, 107, 54, 0.25);
+            --footer: #5b655f;
+            --footer-hover: #39423d;
+            --segment-border: rgba(30, 40, 34, 0.35);
+            --segment-divider: rgba(30, 40, 34, 0.2);
+            --segment-bg: rgba(255, 255, 255, 0.7);
+            --segment-icon: #2b332d;
+            --segment-active-bg: #e0e3dd;
+            --segment-active-icon: #1d221f;
+            --segment-hover-bg: rgba(0, 0, 0, 0.05);
+            --segment-shadow: 0 8px 18px rgba(23, 32, 28, 0.18);
+            --tooltip-bg: #1d221f;
+            --tooltip-text: #f3f4f0;
+        }
+        html[data-theme="dark"] {
+            color-scheme: dark;
+            --bg: #0a0a0a;
+            --scene-bg: #000000;
+            --grid-color: rgba(0, 255, 0, 0.03);
+            --text: #e0e0e0;
+            --text-muted: #d4d4d4;
+            --text-subtle: rgba(255, 255, 255, 0.5);
+            --accent: #00dd55;
+            --accent-strong: #00ff00;
+            --accent-glow: rgba(0, 255, 0, 0.3);
+            --content-bg: rgba(20, 20, 20, 0.7);
+            --content-border: rgba(0, 255, 0, 0.12);
+            --content-shadow: 0 0 80px rgba(0, 255, 0, 0.04), 0 8px 32px rgba(0, 0, 0, 0.4);
+            --photo-border: rgba(0, 255, 0, 0.2);
+            --photo-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+            --link: #00dd55;
+            --link-hover: #00ff00;
+            --focus-outline: #00ff00;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+            --contact-hover-bg: rgba(0, 255, 0, 0.05);
+            --contact-hover-border: rgba(0, 255, 0, 0.4);
+            --contact-hover-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+            --icon-hover: #00ff00;
+            --icon-hover-glow: rgba(0, 255, 0, 0.5);
+            --banner-title: #ffffff;
+            --banner-glow: rgba(255, 255, 255, 0.3);
+            --footer: #9a9a9a;
+            --footer-hover: #bbb;
+            --segment-border: rgba(255, 255, 255, 0.25);
+            --segment-divider: rgba(255, 255, 255, 0.12);
+            --segment-bg: rgba(0, 0, 0, 0.25);
+            --segment-icon: #e0e0e0;
+            --segment-active-bg: #2c312c;
+            --segment-active-icon: #f7f7f7;
+            --segment-hover-bg: rgba(255, 255, 255, 0.08);
+            --segment-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+            --tooltip-bg: #f1f2f0;
+            --tooltip-text: #1b1b1b;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        #banner-container {
+            position: relative;
+            height: 280px;
+            width: 100%;
+        }
+        @media (max-width: 640px) {
+            #banner-container { height: 200px; }
+            #banner-title { font-size: 2.5rem; }
+        }
+        #banner {
+            height: 100%;
+            width: 100%;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            background: var(--scene-bg);
+        }
+        #banner canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        #banner-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Bangers', cursive;
+            font-size: 3rem;
+            color: var(--banner-title);
+            text-shadow: 0 0 16px var(--banner-glow);
+            pointer-events: none;
+            letter-spacing: 0.1em;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        #content {
+            max-width: 800px;
+            margin: 48px auto;
+            padding: 48px;
+            font-size: 17px;
+            line-height: 1.7;
+            font-weight: 400;
+            flex: 1;
+            background: var(--content-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--content-border);
+            border-radius: 16px;
+            box-shadow: var(--content-shadow);
+            animation: fadeInUp 0.6s ease-out both;
+            animation-delay: 0.2s;
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--photo-border);
+            box-shadow: var(--photo-shadow);
+        }
+        .profile-text h1 {
+            margin-bottom: 24px;
+        }
+        @media (max-width: 700px) {
+            #content {
+                margin: 24px 16px;
+                padding: 32px 24px;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                justify-items: center;
+                text-align: center;
+            }
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+            }
+            .contact-links {
+                justify-content: center;
+            }
+        }
+        h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: var(--accent-strong);
+            text-shadow: 0 0 30px var(--accent-glow);
+        }
+        .intro {
+            margin-bottom: 48px;
+        }
+        .intro p {
+            margin-bottom: 20px;
+        }
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+        p {
+            margin-bottom: 16px;
+            color: var(--text-muted);
+        }
+        .contact-intro {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-subtle);
+            margin-bottom: 16px;
+        }
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+        a:focus {
+            outline: 2px solid var(--focus-outline);
+            outline-offset: 2px;
+        }
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .contact-links a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 20px 24px;
+            min-width: 100px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            color: var(--text-muted);
+            font-size: 13px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .contact-links a:hover {
+            text-decoration: none;
+            transform: translateY(-2px);
+            background: var(--contact-hover-bg);
+            border-color: var(--contact-hover-border);
+            box-shadow: var(--contact-hover-shadow);
+        }
+        .contact-links a:hover i {
+            color: var(--icon-hover);
+            text-shadow: 0 0 10px var(--icon-hover-glow);
+        }
+        .contact-links a:focus {
+            outline: 2px solid var(--focus-outline);
+            outline-offset: 4px;
+        }
+        .contact-links i {
+            font-size: 1.75rem;
+            transition: all 0.2s ease;
+        }
+        footer {
+            padding: 24px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--footer);
+        }
+        footer a {
+            color: var(--footer);
+        }
+        footer a:hover,
+        footer a:focus {
+            color: var(--footer-hover);
+        }
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            display: inline-flex;
+            background: var(--segment-bg);
+            border: 1px solid var(--segment-border);
+            border-radius: 10px;
+            box-shadow: var(--segment-shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        .theme-option {
+            position: relative;
+            border: none;
+            background: transparent;
+            color: var(--segment-icon);
+            width: 44px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            padding: 0;
+        }
+        .theme-option + .theme-option {
+            border-left: 1px solid var(--segment-divider);
+        }
+        .theme-option svg {
+            width: 20px;
+            height: 20px;
+        }
+        .theme-option:hover {
+            background: var(--segment-hover-bg);
+        }
+        .theme-option.is-active {
+            background: var(--segment-active-bg);
+            color: var(--segment-active-icon);
+        }
+        @media (hover: hover) {
+            .theme-option[data-tooltip]:hover::after {
+                content: attr(data-tooltip);
+                position: absolute;
+                top: calc(100% + 8px);
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--tooltip-bg);
+                color: var(--tooltip-text);
+                font-size: 0.7rem;
+                font-weight: 600;
+                letter-spacing: 0.02em;
+                padding: 6px 8px;
+                border-radius: 6px;
+                white-space: nowrap;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+                z-index: 20;
+            }
+            .theme-option[data-tooltip]:hover::before {
+                content: "";
+                position: absolute;
+                top: calc(100% + 2px);
+                left: 50%;
+                transform: translateX(-50%);
+                border: 6px solid transparent;
+                border-bottom-color: var(--tooltip-bg);
+            }
+        }
+        @media (max-width: 640px) {
+            .theme-switcher {
+                top: 12px;
+                right: 12px;
+                border-radius: 12px;
+            }
+            .theme-option {
+                width: 42px;
+                height: 42px;
+            }
+        }
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-switcher" role="group" aria-label="Theme">
+        <button type="button" class="theme-option is-active" data-theme-value="system" data-tooltip="System" aria-label="System" aria-pressed="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+        </button>
+        <button type="button" class="theme-option" data-theme-value="light" data-tooltip="Light" aria-label="Light" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="4"></circle>
+                <line x1="12" y1="2" x2="12" y2="4"></line>
+                <line x1="12" y1="20" x2="12" y2="22"></line>
+                <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+                <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+                <line x1="2" y1="12" x2="4" y2="12"></line>
+                <line x1="20" y1="12" x2="22" y2="12"></line>
+                <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+                <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+            </svg>
+        </button>
+        <button type="button" class="theme-option" data-theme-value="dark" data-tooltip="Dark" aria-label="Dark" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+            </svg>
+        </button>
+    </div>
+    <header id="banner-container">
+        <div id="banner" role="img" aria-label="3D terrain visualization of Vancouver area"></div>
+        <div id="banner-title" aria-hidden="true">NUNTZ.COM</div>
+    </header>
+
+    <main id="content">
+        <div class="content-grid">
+            <img src="photo.jpeg" alt="Nicolas Untz" class="profile-photo">
+            <div class="profile-text">
+                <h1>Hi! I'm Nicolas.</h1>
+                <div class="intro">
+                    <p>I work as an IT leader in Fintech and I have over 30 years of experience in IT Operations and Software Development. I like working on challenging problems with global teams.</p>
+                    <p>I live in Vancouver, BC, Canada, and also enjoy photography, reading, and hiking.</p>
+                </div>
+
+                <p class="contact-intro">// get in touch</p>
+                <div class="contact-links">
+                    <a href="mailto:nicolas@nuntz.com" class="email"><i class="fas fa-envelope" aria-hidden="true"></i><span>Email</span></a>
+                    <a href="https://linkedin.com/in/nuntz" class="linkedin"><i class="fab fa-linkedin" aria-hidden="true"></i><span>LinkedIn</span></a>
+                    <a href="https://hachyderm.io/@nuntz" class="mastodon"><i class="fab fa-mastodon" aria-hidden="true"></i><span>Mastodon</span></a>
+                    <a href="https://twitter.com/nuntz" class="twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span>X</span></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Vancouver DEM: <a href="https://doi.org/10.5069/G9028PQB" target="_blank" rel="noopener">Copernicus Global Digital Elevation Model. Distributed by OpenTopography.<span class="visually-hidden"> (opens in new tab)</span></a>
+    </footer>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+        const bannerEl = document.getElementById('banner');
+
+        let scene, camera, renderer, controls, terrain, wireframeGroup;
+        let metadata;
+        let solidMaterial, wireframeBaseMaterial, wireframeLineMaterial;
+        let isWireframe = true;   // Always wireframe
+        let isFlyover = true;     // Always flyover
+        let flyoverX = 0;
+        let flyoverDirection = -1;  // -1 = westbound, 1 = eastbound
+        let savedCameraState = null;
+        let lastInteractionTime = 0;
+        let currentLookTarget = new THREE.Vector3();
+        let lookOffsetX = 0;  // Horizontal look offset in radians
+        let lookOffsetY = 0;  // Vertical look offset in radians
+        let targetLookOffsetX = 0;  // Target offset for smooth interpolation
+        let targetLookOffsetY = 0;
+        const MAX_LOOK_ANGLE = Math.PI / 6;  // 30 degrees cone
+        const LOOK_SMOOTHNESS = 0.015;  // How fast to interpolate to target (lower = smoother)
+        let isDragging = false;
+        let lastMouseX = 0;
+        let lastMouseY = 0;
+        // Scale: ~400m per scene unit (based on 2000m elevation range = 5 units height)
+        const FLYOVER_SPEED = 0.005;  // ~100 km/h assuming 40km terrain width
+        const FLYOVER_ALTITUDE = -13.125;  // 750m above terrain (50% of 1500m)
+        const FLYOVER_Z = 15;  // South of center (positive Z = south)
+        const TERRAIN_HALF_WIDTH = 50;
+        const FLYOVER_MIN_X = -TERRAIN_HALF_WIDTH + (TERRAIN_HALF_WIDTH * 2 * 0.2);  // 20% from west edge
+        const FLYOVER_MAX_X = -TERRAIN_HALF_WIDTH + (TERRAIN_HALF_WIDTH * 2 * 0.8);  // 80% from west edge
+        const INACTIVITY_DELAY = 2000;  // ms before resetting view
+        const RESET_SMOOTHNESS = 0.02;  // How fast to reset (0-1)
+        const THEMES = {
+            light: {
+                background: 0xf4f1ea,
+                backgroundCss: '#f4f1ea',
+                wireBase: 0xf4f1ea,
+                wireLine: 0x0f6b36,
+                fog: 0xf4f1ea,
+            },
+            dark: {
+                background: 0x000000,
+                backgroundCss: '#000000',
+                wireBase: 0x000000,
+                wireLine: 0x00ff00,
+                fog: 0x000000,
+            },
+        };
+        const themeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const getSystemTheme = () => (themeMediaQuery.matches ? 'dark' : 'light');
+        let activeThemeSetting = 'system';
+
+        const setSceneTheme = (resolvedTheme) => {
+            const theme = THEMES[resolvedTheme] || THEMES.dark;
+            document.documentElement.style.setProperty('--scene-bg', theme.backgroundCss);
+            if (scene) {
+                scene.background = new THREE.Color(theme.background);
+                if (scene.fog) {
+                    scene.fog.color.setHex(theme.fog);
+                    scene.fog.near = 100;
+                    scene.fog.far = 500;
+                } else {
+                    scene.fog = new THREE.Fog(theme.fog, 100, 500);
+                }
+            }
+            if (renderer) {
+                renderer.setClearColor(theme.background, 1);
+            }
+            if (wireframeBaseMaterial) {
+                wireframeBaseMaterial.color.setHex(theme.wireBase);
+            }
+            if (wireframeLineMaterial) {
+                wireframeLineMaterial.uniforms.lineColor.value.setHex(theme.wireLine);
+                wireframeLineMaterial.uniforms.backgroundColor.value.setHex(theme.background);
+            }
+        };
+
+        const applyThemeSetting = (setting) => {
+            activeThemeSetting = setting || 'system';
+            const resolvedTheme = activeThemeSetting === 'system' ? getSystemTheme() : activeThemeSetting;
+            setSceneTheme(resolvedTheme);
+        };
+
+        window.setFlyoverTheme = applyThemeSetting;
+
+        const getPageThemeSetting = () => {
+            if (window.currentThemeSetting) {
+                return window.currentThemeSetting;
+            }
+            const htmlTheme = document.documentElement.getAttribute('data-theme');
+            return htmlTheme ? htmlTheme : 'system';
+        };
+
+        const getBannerSize = () => {
+            if (!bannerEl) {
+                return { width: window.innerWidth, height: window.innerHeight };
+            }
+            const rect = bannerEl.getBoundingClientRect();
+            return {
+                width: Math.max(1, rect.width),
+                height: Math.max(1, rect.height),
+            };
+        };
+
+        const onWindowResize = () => {
+            if (!renderer || !camera) {
+                return;
+            }
+            const { width, height } = getBannerSize();
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+        };
+
+        const handlePointerDown = (event) => {
+            isDragging = true;
+            lastMouseX = event.clientX;
+            lastMouseY = event.clientY;
+            lastInteractionTime = performance.now();
+        };
+
+        const handlePointerUp = () => {
+            isDragging = false;
+        };
+
+        const handlePointerMove = (event) => {
+            if (!isDragging) {
+                return;
+            }
+
+            const deltaX = event.clientX - lastMouseX;
+            const deltaY = event.clientY - lastMouseY;
+            lastMouseX = event.clientX;
+            lastMouseY = event.clientY;
+
+            // Adjust target look offset (reduced sensitivity for gentler feel, inverted)
+            const sensitivity = 0.001;
+            targetLookOffsetX -= deltaX * sensitivity;
+            targetLookOffsetY += deltaY * sensitivity;
+
+            // Clamp target to 30 degree cone
+            targetLookOffsetX = Math.max(-MAX_LOOK_ANGLE, Math.min(MAX_LOOK_ANGLE, targetLookOffsetX));
+            targetLookOffsetY = Math.max(-MAX_LOOK_ANGLE, Math.min(MAX_LOOK_ANGLE, targetLookOffsetY));
+
+            lastInteractionTime = performance.now();
+        };
+
+        const attachInteractionHandlers = () => {
+            if (!renderer) {
+                return;
+            }
+            renderer.domElement.addEventListener('mousedown', handlePointerDown);
+            window.addEventListener('mouseup', handlePointerUp);
+            window.addEventListener('mousemove', handlePointerMove);
+        };
+
+        async function init() {
+            if (!bannerEl) {
+                return;
+            }
+
+            // Load metadata
+            const metaResponse = await fetch('topo.json');
+            metadata = await metaResponse.json();
+
+            // Scene setup
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(THEMES.dark.background);
+            scene.fog = new THREE.Fog(THEMES.dark.fog, 100, 500);
+
+            // Camera
+            const { width, height } = getBannerSize();
+            camera = new THREE.PerspectiveCamera(30, width / height, 0.1, 2000);  // Narrower FOV (2x focal length)
+            // Position set in flyover init below
+
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            bannerEl.appendChild(renderer.domElement);
+
+            // Controls
+            controls = new OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.maxPolarAngle = Math.PI / 2.1;
+            controls.minDistance = 10;
+            controls.maxDistance = 500;
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            directionalLight.position.set(50, 100, 50);
+            scene.add(directionalLight);
+
+            const directionalLight2 = new THREE.DirectionalLight(0x8888ff, 0.3);
+            directionalLight2.position.set(-50, 50, -50);
+            scene.add(directionalLight2);
+
+            const initialThemeSetting = getPageThemeSetting();
+            applyThemeSetting(initialThemeSetting);
+
+            // Load heightmap and create terrain
+            await loadTerrain();
+            applyThemeSetting(activeThemeSetting);
+
+            // Handle resize
+            window.addEventListener('resize', onWindowResize);
+            attachInteractionHandlers();
+
+            // Initialize flyover mode - disable OrbitControls entirely
+            controls.enabled = false;
+            flyoverX = FLYOVER_MIN_X;  // Start at western edge of bounded trajectory
+            flyoverDirection = 1;      // Start heading east
+            lastInteractionTime = 0;
+
+            // Set initial camera position immediately
+            camera.position.set(flyoverX, FLYOVER_ALTITUDE, FLYOVER_Z);
+            updateCameraLook();
+
+            animate();
+        }
+
+        async function loadTerrain() {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = () => {
+                    // Extract height data from image
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+                    const imageData = ctx.getImageData(0, 0, img.width, img.height);
+
+                    createTerrainMesh(imageData, img.width, img.height);
+                    resolve();
+                };
+                img.src = metadata.heightmapFile;
+            });
+        }
+
+        function createTerrainMesh(imageData, width, height) {
+            // Create geometry
+            const geometry = new THREE.PlaneGeometry(
+                100,  // width in scene units
+                100 * (height / width),  // maintain aspect ratio
+                width - 1,
+                height - 1
+            );
+
+            const vertices = geometry.attributes.position.array;
+            const elevationRange = metadata.maxElevation - metadata.minElevation;
+            const heightScale = 30 / Math.max(elevationRange, 1);  // Scale to reasonable visual height
+
+            // Apply height data
+            for (let i = 0; i < width * height; i++) {
+                // 16-bit PNG is read as 8-bit per channel, combine R and G for better precision
+                const r = imageData.data[i * 4];
+                const g = imageData.data[i * 4 + 1];
+                const normalized = (r * 256 + g) / 65535;
+                const elevation = normalized * elevationRange + metadata.minElevation;
+
+                // PlaneGeometry vertices are x, y, z where y is up after rotation
+                vertices[i * 3 + 2] = normalized * 5;  // z becomes height (reduced for realistic scale)
+            }
+
+            geometry.attributes.position.needsUpdate = true;
+            geometry.computeVertexNormals();
+
+            // Create color gradient based on elevation
+            const colors = new Float32Array(width * height * 3);
+            for (let i = 0; i < width * height; i++) {
+                const r = imageData.data[i * 4];
+                const g = imageData.data[i * 4 + 1];
+                const normalized = (r * 256 + g) / 65535;
+
+                // Color gradient: blue (low) -> green -> brown -> white (high)
+                const color = getElevationColor(normalized);
+                colors[i * 3] = color.r;
+                colors[i * 3 + 1] = color.g;
+                colors[i * 3 + 2] = color.b;
+            }
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+            // Materials
+            solidMaterial = new THREE.MeshLambertMaterial({
+                vertexColors: true,
+                side: THREE.DoubleSide,
+            });
+
+            // Wireframe materials: solid black base + green lines on top
+            wireframeBaseMaterial = new THREE.MeshBasicMaterial({
+                color: 0x000000,
+                side: THREE.DoubleSide,
+                polygonOffset: true,
+                polygonOffsetFactor: 1,
+                polygonOffsetUnits: 1,
+            });
+
+            // Shader material for distance-based fade (green to black)
+            wireframeLineMaterial = new THREE.ShaderMaterial({
+                uniforms: {
+                    fadeStart: { value: FLYOVER_Z },      // Full green at camera Z
+                    fadeEnd: { value: -32 },  // Fade to background at mid-distance
+                    lineColor: { value: new THREE.Color(THEMES.dark.wireLine) },
+                    backgroundColor: { value: new THREE.Color(THEMES.dark.background) },
+                },
+                vertexShader: `
+                    varying vec3 vWorldPosition;
+                    void main() {
+                        vec4 worldPos = modelMatrix * vec4(position, 1.0);
+                        vWorldPosition = worldPos.xyz;
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                    }
+                `,
+                fragmentShader: `
+                    uniform float fadeStart;
+                    uniform float fadeEnd;
+                    uniform vec3 lineColor;
+                    uniform vec3 backgroundColor;
+                    varying vec3 vWorldPosition;
+                    void main() {
+                        float fade = smoothstep(fadeEnd, fadeStart, vWorldPosition.z);
+                        vec3 color = mix(backgroundColor, lineColor, fade);
+                        gl_FragColor = vec4(color, 1.0);
+                    }
+                `,
+                wireframe: true,
+                side: THREE.DoubleSide,
+            });
+
+            // Main terrain mesh (hidden in wireframe-only mode)
+            terrain = new THREE.Mesh(geometry, solidMaterial);
+            terrain.rotation.x = -Math.PI / 2;
+            terrain.position.y = -15;
+            terrain.visible = false;
+
+            // Wireframe group (black base + green lines) - visible by default
+            wireframeGroup = new THREE.Group();
+            const wireframeBase = new THREE.Mesh(geometry, wireframeBaseMaterial);
+            const wireframeLines = new THREE.Mesh(geometry, wireframeLineMaterial);
+            wireframeGroup.add(wireframeBase);
+            wireframeGroup.add(wireframeLines);
+            wireframeGroup.rotation.x = -Math.PI / 2;
+            wireframeGroup.position.y = -15;
+            wireframeGroup.visible = true;
+
+            scene.add(terrain);
+            scene.add(wireframeGroup);
+        }
+
+        function getElevationColor(normalized) {
+            // Elevation color gradient
+            const stops = [
+                { pos: 0.0, color: new THREE.Color(0x1a5f7a) },   // Deep water blue
+                { pos: 0.05, color: new THREE.Color(0x3d8b37) },  // Forest green (water ~100m)
+                { pos: 0.15, color: new THREE.Color(0x7cba3d) },  // Light green
+                { pos: 0.35, color: new THREE.Color(0xc9a227) },  // Golden brown
+                { pos: 0.55, color: new THREE.Color(0x8b6914) },  // Brown
+                { pos: 0.75, color: new THREE.Color(0x9a9a9a) },  // Gray rock
+                { pos: 1.0, color: new THREE.Color(0xffffff) },   // Snow white
+            ];
+
+            // Find the two stops to interpolate between
+            let lower = stops[0];
+            let upper = stops[stops.length - 1];
+
+            for (let i = 0; i < stops.length - 1; i++) {
+                if (normalized >= stops[i].pos && normalized <= stops[i + 1].pos) {
+                    lower = stops[i];
+                    upper = stops[i + 1];
+                    break;
+                }
+            }
+
+            const range = upper.pos - lower.pos;
+            const t = range > 0 ? (normalized - lower.pos) / range : 0;
+
+            return new THREE.Color().lerpColors(lower.color, upper.color, t);
+        }
+
+        // Update camera look direction based on offsets
+        function updateCameraLook() {
+            // Base look direction (facing north = -Z)
+            const lookDistance = 50;
+            const baseX = flyoverX;
+            const baseY = FLYOVER_ALTITUDE - 1;
+            const baseZ = FLYOVER_Z - lookDistance;
+
+            // Apply offsets within cone constraint
+            const targetX = baseX + Math.sin(lookOffsetX) * lookDistance;
+            const targetY = baseY + Math.sin(lookOffsetY) * lookDistance * 0.5;
+            const targetZ = baseZ + (1 - Math.cos(lookOffsetX)) * lookDistance;
+
+            camera.lookAt(targetX, targetY, targetZ);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Move east or west
+            flyoverX += FLYOVER_SPEED * flyoverDirection;
+
+            // Reverse direction at edges (constrained to 20%-80% of width)
+            if (flyoverX <= FLYOVER_MIN_X) {
+                flyoverX = FLYOVER_MIN_X;
+                flyoverDirection = 1;  // Eastbound
+            } else if (flyoverX >= FLYOVER_MAX_X) {
+                flyoverX = FLYOVER_MAX_X;
+                flyoverDirection = -1;  // Westbound
+            }
+
+            // Position camera at altitude, south of center, moving along x
+            camera.position.set(flyoverX, FLYOVER_ALTITUDE, FLYOVER_Z);
+
+            // Check if we should reset look direction to default
+            const timeSinceInteraction = performance.now() - lastInteractionTime;
+            if (timeSinceInteraction > INACTIVITY_DELAY) {
+                // Smoothly interpolate target back to zero (facing north)
+                targetLookOffsetX *= (1 - RESET_SMOOTHNESS);
+                targetLookOffsetY *= (1 - RESET_SMOOTHNESS);
+            }
+
+            // Smoothly interpolate actual look offset towards target
+            lookOffsetX += (targetLookOffsetX - lookOffsetX) * LOOK_SMOOTHNESS;
+            lookOffsetY += (targetLookOffsetY - lookOffsetY) * LOOK_SMOOTHNESS;
+
+            updateCameraLook();
+            renderer.render(scene, camera);
+        }
+
+        document.addEventListener('themechange', (event) => {
+            const theme = event.detail && event.detail.theme;
+            if (typeof theme === 'string') {
+                applyThemeSetting(theme);
+            }
+        });
+
+        if (themeMediaQuery.addEventListener) {
+            themeMediaQuery.addEventListener('change', () => {
+                if (activeThemeSetting === 'system') {
+                    applyThemeSetting('system');
+                }
+            });
+        } else if (themeMediaQuery.addListener) {
+            themeMediaQuery.addListener(() => {
+                if (activeThemeSetting === 'system') {
+                    applyThemeSetting('system');
+                }
+            });
+        }
+
+        init().catch(console.error);
+    </script>
+    <script>
+        const themeButtons = document.querySelectorAll('[data-theme-value]');
+        let currentTheme = 'system';
+
+        const notifyFlyoverTheme = (theme) => {
+            window.currentThemeSetting = theme;
+            if (window.setFlyoverTheme) {
+                window.setFlyoverTheme(theme);
+            }
+            document.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+        };
+
+        const applyTheme = (theme) => {
+            currentTheme = theme;
+            if (theme === 'system') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', theme);
+            }
+            themeButtons.forEach((button) => {
+                const isActive = button.dataset.themeValue === theme;
+                button.classList.toggle('is-active', isActive);
+                button.setAttribute('aria-pressed', String(isActive));
+            });
+            notifyFlyoverTheme(theme);
+        };
+
+        applyTheme('system');
+        themeButtons.forEach((button) => {
+            button.addEventListener('click', () => applyTheme(button.dataset.themeValue));
+        });
+    </script>
+</body>
+</html>
